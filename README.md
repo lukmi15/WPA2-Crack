@@ -10,4 +10,4 @@ Optionally, we may use a dictionary, GPU acceleration, or computing clusters usi
 ## References
 Thanks to the projects [wpa_supplicant](https://w1.fi/wpa_supplicant/) and [aircrack-ng](https://github.com/aircrack-ng/aircrack-ng) which we are using as reference for the hash algorithm.
 
-The code adapted from the project wpa_supplicant is in the `wpa2_hash*` files.
+The code adapted from the project wpa_supplicant is in the `wpa2_hash.?` and `sha1.?` files.
