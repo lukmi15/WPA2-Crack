@@ -79,7 +79,7 @@ void SHA1Init(SHA1_CTX* context)
 void SHA1Update(SHA1_CTX* context, const void *_data, uint32_t len)
 {
 	uint32_t i, j;
-	const unsigned char *data = _data;
+	const unsigned char *data = (const unsigned char*)_data;
 
 	j = (context->count[0] >> 3) & 63;
 	if ((context->count[0] += len << 3) < (len << 3))

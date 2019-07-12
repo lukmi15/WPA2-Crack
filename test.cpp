@@ -6,8 +6,13 @@ Author(s)		: Lukas Mirow, contributors of the wpa_supplicant project
 #include "wpa2_hash_wrapper.hpp"
 using namespace std;
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
-	cout << calc_wpa2_hash("SSID", "PASS") << endl;
+	if (argc < 3)
+	{
+		printf("Too few arguments!\n");
+		exit(1);
+	}
+	cout << hex << calc_wpa2_hash(argv[1], argv[2]) << endl;
 	return 0;
 }

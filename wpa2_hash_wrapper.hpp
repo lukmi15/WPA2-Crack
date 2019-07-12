@@ -12,7 +12,7 @@ Date of creation	: 7/11/2019
 #include <string>
 #include "wpa2_hash.h"
 
-std::string data2hex(unsigned char data);
+std::string data2hex(uint8_t *data);
 std::string calc_wpa2_hash(const std::string& ssid, const std::string& pass);
 
 #endif //WPA2_HASH_WRAPPER_H
