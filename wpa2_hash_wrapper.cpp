@@ -3,6 +3,9 @@ Author(s)		: Lukas Mirow
 Date of creation	: 7/11/2019
 */
 
+#define RES_LEN 32
+#define ITERATIONS 4096
+
 #include "wpa2_hash_wrapper.hpp"
 #include <sstream>
 #include <string.h>
@@ -24,6 +27,7 @@ string calc_wpa2_hash(const string& ssid, const string& pass)
 	uint8_t res[RES_LEN];
 	strcpy(cssid, ssid.c_str());
 	strcpy(cpass, pass.c_str());
-	pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length() + 1, ITERATIONS, res, RES_LEN); //FIXME: Does the 3rd parameter contain the null byte of the string?
-	return data2hex((unsigned)res);
+	if (pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length() + 1, ITERATIONS, res, RES_LEN)) //FIXME: Does the 3rd parameter contain the null byte of the string?
+		return "";
+	return data2hex((unsigned*)res);
 }

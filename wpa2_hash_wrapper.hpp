@@ -6,9 +6,6 @@ Date of creation	: 7/11/2019
 #ifndef WPA2_HASH_WRAPPER_H
 #define WPA2_HASH_WRAPPER_H
 
-#define RES_LEN 32
-#define ITERATIONS 4096
-
 #include <string>
 #include "wpa2_hash.h"
 
