@@ -39,3 +39,4 @@ wpa_passphrase-test/
 ssid.txt
 pw.txt
 hash.txt
+test.sh

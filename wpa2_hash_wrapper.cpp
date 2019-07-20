@@ -27,7 +27,8 @@ string calc_wpa2_hash(const string& ssid, const string& pass)
 	uint8_t res[RES_LEN];
 	strcpy(cssid, ssid.c_str());
 	strcpy(cpass, pass.c_str());
-	if (pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length() + 1, ITERATIONS, res, RES_LEN)) //FIXME: Does the 3rd parameter contain the null byte of the string?
+	fprintf(stderr, "Calling with: (`%s`, `%s`, %u, %u, %p, %u)\n", cpass, cssid, ssid.length(), ITERATIONS, res, RES_LEN);//DEBUG
+	if (pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length(), ITERATIONS, res, RES_LEN)) //FIXME: Does the 3rd parameter contain the null byte of the string?
 		return "";
 	return data2hex((unsigned*)res);
 }
