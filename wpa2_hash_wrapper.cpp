@@ -9,15 +9,18 @@ Date of creation	: 7/11/2019
 #include "wpa2_hash_wrapper.hpp"
 #include <sstream>
 #include <string.h>
+#include <iomanip>
 using namespace std;
 
 #include <iostream>
 #include <ios>
 
-string data2hex(unsigned *data)
+string data2hex(uint8_t *data)
 {
 	stringstream ss;
-	ss << hex << data;
+	ss << setfill('0') << setw(2) << hex;
+	for (size_t i = 0; i <= RES_LEN; i++)
+		ss << (unsigned)data[i];
 	return ss.str();
 }
 
@@ -27,8 +30,7 @@ string calc_wpa2_hash(const string& ssid, const string& pass)
 	uint8_t res[RES_LEN];
 	strcpy(cssid, ssid.c_str());
 	strcpy(cpass, pass.c_str());
-	fprintf(stderr, "Calling with: (`%s`, `%s`, %u, %u, %p, %u)\n", cpass, cssid, ssid.length(), ITERATIONS, res, RES_LEN);//DEBUG
-	if (pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length(), ITERATIONS, res, RES_LEN)) //FIXME: Does the 3rd parameter contain the null byte of the string?
+	if (pbkdf2_sha1(cpass, (const uint8_t*)cssid, ssid.length(), ITERATIONS, res, RES_LEN))
 		return "";
-	return data2hex((unsigned*)res);
+	return data2hex(res);
 }
