@@ -18,9 +18,8 @@ using namespace std;
 string data2hex(uint8_t *data)
 {
 	stringstream ss;
-	ss << setfill('0') << setw(2) << hex;
-	for (size_t i = 0; i <= RES_LEN; i++)
-		ss << (unsigned)data[i];
+	for (size_t i = 0; i < RES_LEN; i++)
+		ss << setfill('0') << setw(2) << hex << (unsigned)data[i];
 	return ss.str();
 }
 
