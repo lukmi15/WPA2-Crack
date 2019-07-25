@@ -34,5 +34,5 @@
 #Vim:
 *.swp
 
-#Test files:
-wpa_passphrase-test/
+#Private reference files
+ref/
