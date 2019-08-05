@@ -34,9 +34,5 @@
 #Vim:
 *.swp
 
-#Test files:
-wpa_passphrase-test/
-ssid.txt
-pw.txt
-hash.txt
-test.sh
+#Private reference files
+ref/
