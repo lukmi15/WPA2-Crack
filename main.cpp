@@ -43,7 +43,7 @@ float execute_benchmarks(unsigned amount)
 
 void print_benchmark_result(float *res)
 {
-	float min, lowq, mean, highq, max;
+	float min, mean, max;
 	min = INFINITY;
 	mean = 0;
 	max = -INFINITY;
@@ -65,11 +65,15 @@ void print_benchmark_result(float *res)
 int main(int argc, char **argv)
 {
 	float res[RUNS];
+	int id;
 	if (MPI_Init(&argc, &argv) != 0)
 		exit(1);
 	for (unsigned j = 0; j < RUNS; j++)
 		res[j] = execute_benchmarks(HASHES_PER_RUN);
+	MPI_Comm_rank(MPI_COMM_WORLD, &id);
 	MPI_Finalize();
+	if (id != 0)
+		return 0;
 	print_benchmark_result(res); //FIXME: Is printed in every process...
 	return 0;
 }
