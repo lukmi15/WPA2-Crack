@@ -15,5 +15,7 @@ The code adapted from wpa_supplicant are in the `wpa2_hash.*` and `sha1.*` files
 ## Make Directions
 
 Compilation: `make`
+
 Execution: `make run`
+
 Reverting compilation: `make clean`
