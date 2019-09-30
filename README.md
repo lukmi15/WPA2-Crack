@@ -11,3 +11,9 @@ Optionally, we may use a dictionary, GPU acceleration, or computing clusters usi
 Thanks to the project [wpa_supplicant](https://w1.fi/wpa_supplicant/) which we are using as reference for the hash algorithm.
 
 The code adapted from wpa_supplicant are in the `wpa2_hash.*` and `sha1.*` files.
+
+## Make Directions
+
+Compilation: `make`
+Execution: `make run`
+Reverting compilation: `make clean`
